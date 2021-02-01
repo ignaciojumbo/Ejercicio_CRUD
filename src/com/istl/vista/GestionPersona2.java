@@ -330,6 +330,7 @@ public class GestionPersona2 extends javax.swing.JFrame {
 
     private void bnbuscarnumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnbuscarnumeroActionPerformed
         Persona persona = controladorPersona.buscarPersonasNumero(txttelefono.getText());
+        personaEditar = persona;
 
         if (persona != null) {
             personaEditar = persona;
@@ -349,6 +350,7 @@ public class GestionPersona2 extends javax.swing.JFrame {
 
     private void bnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnbuscarActionPerformed
          Persona persona = controladorPersona.buscarPersonas(txtcedula.getText());
+         persona = personaEditar;
 
         if (persona != null) {
             personaEditar = persona;

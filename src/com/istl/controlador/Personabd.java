@@ -40,7 +40,8 @@ public class Personabd {
     public boolean eliminar(Persona persona) {
 
         boolean eliminar = false;
-        String sql = "DELETE FROM `bdejercicio1`.`persona1` WHERE (`idpersona1` = '" + String.valueOf(persona.getIdPersona()) + "');";
+        String sql = "DELETE FROM `bdejercicio1`.`persona1` WHERE (`idpersona1` = '"
+                + String.valueOf(persona.getIdPersona()) + "');";
         try {
             con = new Conexion().getConexion();
             stm = (Statement) con.createStatement();
@@ -79,7 +80,6 @@ public class Personabd {
         Persona c = null;
         String sql = "SELECT * FROM bdejercicio1.persona1 where Cedula like " + cedula + ";";
 
-        ArrayList<Persona> listaPersonas = new ArrayList<>();
         try {
             con = new Conexion().getConexion();
             stm = (Statement) con.createStatement();
@@ -94,7 +94,6 @@ public class Personabd {
                 c.setDireccion(rs.getString(5));
                 c.setCorreo(rs.getString(6));
                 c.setTelefono(rs.getString(7));
-                listaPersonas.add(c);
 
             }
             stm.close();
@@ -106,16 +105,14 @@ public class Personabd {
 
         return c;
     }
-    
+
     public Persona buscarPersonasNumero(String numero) {
         Connection co = null;
-
         //Sentencia de JDBC para obtener valores de la base de datos.
         ResultSetImpl rs;
         Persona c = null;
-        String sql =  "SELECT * FROM bdejercicio1.persona1 where Telefono like '"+numero+"';";
+        String sql = "SELECT * FROM bdejercicio1.persona1 where Telefono like '" + numero + "';";
 
-        ArrayList<Persona> listaPersonas = new ArrayList<>();
         try {
             con = new Conexion().getConexion();
             stm = (Statement) con.createStatement();
@@ -130,8 +127,6 @@ public class Personabd {
                 c.setDireccion(rs.getString(5));
                 c.setCorreo(rs.getString(6));
                 c.setTelefono(rs.getString(7));
-                listaPersonas.add(c);
-               
             }
             stm.close();
             rs.close();
@@ -139,7 +134,6 @@ public class Personabd {
         } catch (SQLException e) {
             System.out.println("Error:" + e.getMessage());
         }
-
         return c;
     }
 //  

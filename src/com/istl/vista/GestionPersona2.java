@@ -332,14 +332,13 @@ public class GestionPersona2 extends javax.swing.JFrame {
         Persona persona = controladorPersona.buscarPersonasNumero(txttelefono.getText());
 
         if (persona != null) {
-            ArrayList<Persona> obtenerPersonas = controladorPersona.obtenerPersonas();
-            personaEditar = obtenerPersonas.get(obtenerPersonas.size() - 1);
-            txtcedula.setText(personaEditar.getCedula());
-            txtnombre.setText(personaEditar.getNombre());
-            txtapellido.setText(personaEditar.getApellido());
-            txtdireccion.setText(personaEditar.getDireccion());
-            txttelefono.setText(personaEditar.getTelefono());
-            txtcorreo.setText(personaEditar.getCorreo());
+            personaEditar = persona;
+            txtcedula.setText(persona.getCedula());
+            txtnombre.setText(persona.getNombre());
+            txtapellido.setText(persona.getApellido());
+            txtdireccion.setText(persona.getDireccion());
+            txttelefono.setText(persona.getTelefono());
+            txtcorreo.setText(persona.getCorreo());
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "No hay una persona en la base de datos", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -352,14 +351,13 @@ public class GestionPersona2 extends javax.swing.JFrame {
          Persona persona = controladorPersona.buscarPersonas(txtcedula.getText());
 
         if (persona != null) {
-            ArrayList<Persona> obtenerPersonas = controladorPersona.obtenerPersonas();
-            personaEditar = obtenerPersonas.get(obtenerPersonas.size() - 1);
-            txtcedula.setText(personaEditar.getCedula());
-            txtnombre.setText(personaEditar.getNombre());
-            txtapellido.setText(personaEditar.getApellido());
-            txtdireccion.setText(personaEditar.getDireccion());
-            txttelefono.setText(personaEditar.getTelefono());
-            txtcorreo.setText(personaEditar.getCorreo());
+            personaEditar = persona;
+            txtcedula.setText(persona.getCedula());
+            txtnombre.setText(persona.getNombre());
+            txtapellido.setText(persona.getApellido());
+            txtdireccion.setText(persona.getDireccion());
+            txttelefono.setText(persona.getTelefono());
+            txtcorreo.setText(persona.getCorreo());
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "No hay una persona en la base de datos", "ERROR", JOptionPane.ERROR_MESSAGE);

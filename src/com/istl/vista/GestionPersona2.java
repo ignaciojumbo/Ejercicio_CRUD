@@ -35,6 +35,9 @@ public class GestionPersona2 extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         bnagregar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -56,10 +59,26 @@ public class GestionPersona2 extends javax.swing.JFrame {
         bnregistro = new javax.swing.JButton();
         bneditar = new javax.swing.JButton();
         bnlimpiar = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuarchivo = new javax.swing.JMenu();
+        jmenusalir = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jmenuaccionbuscar = new javax.swing.JMenuItem();
+        jMenueditar = new javax.swing.JMenuItem();
+        jmenueliminar = new javax.swing.JMenuItem();
+        jmenuguardar = new javax.swing.JMenuItem();
+        menueditar = new javax.swing.JMenu();
 
         jButton1.setText("jButton1");
 
+        jMenu1.setText("File");
+        jMenuBar2.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar2.add(jMenu2);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
 
         bnagregar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -70,7 +89,7 @@ public class GestionPersona2 extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("Registro de usuarios");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -94,8 +113,11 @@ public class GestionPersona2 extends javax.swing.JFrame {
         jlcorreo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jlcorreo.setText("Teléfono");
 
+        txtcedula.setToolTipText("Ingrese una cedula correcta");
+
         bnbuscar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         bnbuscar.setText("Buscar");
+        bnbuscar.setToolTipText("Buscar por cedula");
         bnbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bnbuscarActionPerformed(evt);
@@ -149,22 +171,22 @@ public class GestionPersona2 extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(bnbuscar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlnombre)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(7, 7, 7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlapellido)
-                    .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtapellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ljdireccion)
                     .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ljcorreo)
-                    .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ljcorreo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlcorreo)
@@ -205,51 +227,121 @@ public class GestionPersona2 extends javax.swing.JFrame {
             }
         });
 
+        jMenuBar1.setForeground(new java.awt.Color(102, 255, 102));
+
+        menuarchivo.setText("Archivo");
+
+        jmenusalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmenusalir.setText("Salir");
+        jmenusalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenusalirActionPerformed(evt);
+            }
+        });
+        menuarchivo.add(jmenusalir);
+
+        jMenu3.setText("Accion persona");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
+
+        jmenuaccionbuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmenuaccionbuscar.setText("Buscar");
+        jmenuaccionbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuaccionbuscarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmenuaccionbuscar);
+
+        jMenueditar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenueditar.setText("Editar");
+        jMenueditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenueditarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenueditar);
+
+        jmenueliminar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmenueliminar.setText("Eliminar");
+        jmenueliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenueliminarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmenueliminar);
+
+        jmenuguardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmenuguardar.setText("Guardar");
+        jmenuguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuguardarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmenuguardar);
+
+        menuarchivo.add(jMenu3);
+
+        jMenuBar1.add(menuarchivo);
+
+        menueditar.setText("Editar");
+        jMenuBar1.add(menueditar);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(bnagregar)
-                        .addGap(18, 18, 18)
-                        .addComponent(bneditar)
-                        .addGap(28, 28, 28)
-                        .addComponent(bneliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(bnregistro)
-                        .addGap(18, 18, 18)
-                        .addComponent(bnlimpiar))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(bnagregar)
+                .addGap(18, 18, 18)
+                .addComponent(bneditar)
+                .addGap(28, 28, 28)
+                .addComponent(bneliminar)
+                .addGap(18, 18, 18)
+                .addComponent(bnregistro)
+                .addGap(18, 18, 18)
+                .addComponent(bnlimpiar)
+                .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(200, 200, 200))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(152, 152, 152))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bneliminar)
                     .addComponent(bneditar)
                     .addComponent(bnagregar)
                     .addComponent(bnregistro)
                     .addComponent(bnlimpiar))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bneditarActionPerformed
+        editar();
+    }//GEN-LAST:event_bneditarActionPerformed
+    public void editar() {
         if (personaEditar == null) {
             JOptionPane.showMessageDialog(rootPane, "No hay una persona seleccionada para editar", "ERROR", JOptionPane.ERROR_MESSAGE);
             return;
@@ -272,9 +364,9 @@ public class GestionPersona2 extends javax.swing.JFrame {
             }
 
         }
-    }//GEN-LAST:event_bneditarActionPerformed
+    }
 
-    private void bnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnagregarActionPerformed
+    public void guardar() {
         //metodo para agregar
         if (controladorPersona.buscarPersonas(txtcedula.getText()) != null) {
             JOptionPane.showMessageDialog(rootPane, " La persona con ese número de cédula ya se encuentra registrada en el sistema. ");
@@ -289,9 +381,30 @@ public class GestionPersona2 extends javax.swing.JFrame {
             }
 
         }
+    }
+    private void bnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnagregarActionPerformed
 
+        guardar();
     }//GEN-LAST:event_bnagregarActionPerformed
+    public void buscarcedula() {
+        Persona persona = controladorPersona.buscarPersonas(txtcedula.getText());
 
+        if (persona != null) {
+            personaEditar = persona;
+            txtcedula.setText(persona.getCedula());
+            txtnombre.setText(persona.getNombre());
+            txtapellido.setText(persona.getApellido());
+            txtdireccion.setText(persona.getDireccion());
+            txttelefono.setText(persona.getTelefono());
+            txtcorreo.setText(persona.getCorreo());
+            personaEditar = persona;
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No hay una persona en la base de datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txttelefono.setText("");
+            txttelefono.requestFocus();
+        }
+    }
     private void bnregistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnregistroActionPerformed
         ArrayList<Persona> obtenerPersonas = controladorPersona.obtenerPersonas();
         personaEditar = obtenerPersonas.get(obtenerPersonas.size() - 1);
@@ -302,8 +415,7 @@ public class GestionPersona2 extends javax.swing.JFrame {
         txttelefono.setText(personaEditar.getTelefono());
         txtcorreo.setText(personaEditar.getCorreo());
     }//GEN-LAST:event_bnregistroActionPerformed
-
-    private void bneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bneliminarActionPerformed
+    public void eliminar() {
         if (personaEditar == null) {
             JOptionPane.showMessageDialog(rootPane, "No hay una persona seleccionada para eliminar", "ERROR", JOptionPane.ERROR_MESSAGE);
             return;
@@ -326,11 +438,13 @@ public class GestionPersona2 extends javax.swing.JFrame {
             }
 
         }
+    }
+    private void bneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bneliminarActionPerformed
+        eliminar();
     }//GEN-LAST:event_bneliminarActionPerformed
 
     private void bnbuscarnumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnbuscarnumeroActionPerformed
         Persona persona = controladorPersona.buscarPersonasNumero(txttelefono.getText());
-        personaEditar = persona;
 
         if (persona != null) {
             personaEditar = persona;
@@ -340,6 +454,7 @@ public class GestionPersona2 extends javax.swing.JFrame {
             txtdireccion.setText(persona.getDireccion());
             txttelefono.setText(persona.getTelefono());
             txtcorreo.setText(persona.getCorreo());
+            personaEditar = persona;
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "No hay una persona en la base de datos", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -349,28 +464,36 @@ public class GestionPersona2 extends javax.swing.JFrame {
     }//GEN-LAST:event_bnbuscarnumeroActionPerformed
 
     private void bnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnbuscarActionPerformed
-         Persona persona = controladorPersona.buscarPersonas(txtcedula.getText());
-         persona = personaEditar;
-
-        if (persona != null) {
-            personaEditar = persona;
-            txtcedula.setText(persona.getCedula());
-            txtnombre.setText(persona.getNombre());
-            txtapellido.setText(persona.getApellido());
-            txtdireccion.setText(persona.getDireccion());
-            txttelefono.setText(persona.getTelefono());
-            txtcorreo.setText(persona.getCorreo());
-
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "No hay una persona en la base de datos", "ERROR", JOptionPane.ERROR_MESSAGE);
-            txtcedula.setText("");
-            txtcedula.requestFocus();
-        }
+        buscarcedula();
     }//GEN-LAST:event_bnbuscarActionPerformed
 
     private void bnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnlimpiarActionPerformed
         limpiar();
     }//GEN-LAST:event_bnlimpiarActionPerformed
+
+    private void jmenusalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenusalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jmenusalirActionPerformed
+
+    private void jmenuaccionbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuaccionbuscarActionPerformed
+        buscarcedula();
+    }//GEN-LAST:event_jmenuaccionbuscarActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jMenueditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenueditarActionPerformed
+        editar();
+    }//GEN-LAST:event_jMenueditarActionPerformed
+
+    private void jmenueliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenueliminarActionPerformed
+        eliminar();
+    }//GEN-LAST:event_jmenueliminarActionPerformed
+
+    private void jmenuguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuguardarActionPerformed
+        guardar();
+    }//GEN-LAST:event_jmenuguardarActionPerformed
 
     public Persona guardarEditar() {
         Persona p = new Persona();
@@ -474,13 +597,25 @@ public class GestionPersona2 extends javax.swing.JFrame {
     private javax.swing.JButton bnregistro;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenueditar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlapellido;
     private javax.swing.JLabel jlcedula;
     private javax.swing.JLabel jlcorreo;
     private javax.swing.JLabel jlnombre;
+    private javax.swing.JMenuItem jmenuaccionbuscar;
+    private javax.swing.JMenuItem jmenueliminar;
+    private javax.swing.JMenuItem jmenuguardar;
+    private javax.swing.JMenuItem jmenusalir;
     private javax.swing.JLabel ljcorreo;
     private javax.swing.JLabel ljdireccion;
+    private javax.swing.JMenu menuarchivo;
+    private javax.swing.JMenu menueditar;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtcedula;
     private javax.swing.JTextField txtcorreo;

@@ -5,7 +5,7 @@
  */
 package com.istl.conexion;
 
-import com.istl.vista.GestionPersona2;
+import com.istl.vista.GestionContable;
 import java.sql.SQLException;
 
 /**
@@ -36,7 +36,7 @@ public class ConexionBaseDatos {
 //        
 //        GestionPersona p = new GestionPersona();
 //        p.setVisible(true);
-        GestionPersona2 g = new GestionPersona2();
+        GestionContable g = new GestionContable();
         g.setVisible(true);
 
     }

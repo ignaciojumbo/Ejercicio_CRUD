@@ -7,6 +7,7 @@ import com.mysql.jdbc.ResultSetImpl;
 import com.mysql.jdbc.Statement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Personabd {
 
@@ -140,14 +141,14 @@ public class Personabd {
 //  
 //   
 
-    public ArrayList<Persona> obtenerPersonas() {
+    public List<Persona> obtenerPersonas() {
         Connection co = null;
 
         //Sentencia de JDBC para obtener valores de la base de datos.
         ResultSetImpl rs;
         String sql = "SELECT * FROM persona1;";
 
-        ArrayList<Persona> listaPersonas = new ArrayList<>();
+        List<Persona> listaPersonas = new ArrayList<>();
         try {
             con = new Conexion().getConexion();
             stm = (Statement) con.createStatement();

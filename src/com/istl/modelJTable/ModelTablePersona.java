@@ -1,28 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.istl.modelJTable;
 
 import com.istl.modelo.Persona;
+import com.istl.vista.GestionContable;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
-
-/**
- *
- * @author IDEAPAD 330
- */
 public class ModelTablePersona extends AbstractTableModel {
 
     public String[] n_colNames = {"CÉDULA", "NOMBRE", "APELLIDO", "DIRECIÓN", "TELÉFONO", "CORREO"};
     public List<Persona> persona;
+    private GestionContable gContable;
 
-    public ModelTablePersona(List<Persona> persona){
+    public ModelTablePersona(List<Persona> persona, GestionContable gContable) {
         this.persona = persona;
-        
+        this.gContable = gContable;
+
     }
+
     @Override
     public int getRowCount() {
         //determina el numero de fila que tengo en mi tabla
@@ -50,13 +45,26 @@ public class ModelTablePersona extends AbstractTableModel {
                 return persona.getTelefono();
             case 5:
                 return persona.getCorreo();
-                
+
         }
         return new String();
     }
 
     public String getColumnName(int column) {
         return n_colNames[column];
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        gContable.clickPersona(persona.get(rowIndex));
+        return super.isCellEditable(rowIndex, columnIndex);
+
+    }
+    public List<Persona> getPersona(){
+        return persona;
+    }
+    public void setPersonas(List <Persona> persona){
+        this.persona = persona;
     }
 
 }

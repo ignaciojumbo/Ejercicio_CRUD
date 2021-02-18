@@ -1,15 +1,17 @@
 package com.istl.vista;
 
 import com.istl.controlador.Personabd;
+import com.istl.modelJTable.ComunicacionPersona;
 import com.istl.modelJTable.ModelTablePersona;
 import com.istl.modelo.Persona;
 import com.istl.utilidad.Utilidad;
 import java.awt.HeadlessException;
 import java.sql.SQLException;
- import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
-public class GestionContable extends javax.swing.JFrame {
+public class GestionContable extends javax.swing.JFrame implements ComunicacionPersona {
 
     private Utilidad utilidad;
     private Personabd controladorPersona;
@@ -19,13 +21,12 @@ public class GestionContable extends javax.swing.JFrame {
 
     public GestionContable() {
         controladorPersona = new Personabd();
-        modelTablePersona = new ModelTablePersona(controladorPersona.obtenerPersonas());
+        modelTablePersona = new ModelTablePersona(controladorPersona.obtenerPersonas(), this);
         initComponents();
         this.setLocationRelativeTo(null);
         utilidad = new Utilidad();
-        
+
         gestion = new GestionPersona(txtcedula, txtnombre, txtapellido, txtdireccion, txttelefono, txtcorreo, utilidad, this);
-       
 
     }
 
@@ -62,10 +63,10 @@ public class GestionContable extends javax.swing.JFrame {
         bnregistro = new javax.swing.JButton();
         bneditar = new javax.swing.JButton();
         jlcorreo1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbbusqueda = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        txtbuscarparametro = new javax.swing.JTextField();
         bnbuscarpersona = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -90,7 +91,6 @@ public class GestionContable extends javax.swing.JFrame {
         jMenuBar2.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         setResizable(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -270,17 +270,22 @@ public class GestionContable extends javax.swing.JFrame {
         jlcorreo1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jlcorreo1.setText("Buscar cliente");
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cédula", "Nombres", "Apellidos", "Telefono", "Correo" }));
+        cmbbusqueda.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        cmbbusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cédula", "Nombres", "Apellidos", "Telefono", "Correo" }));
 
         jTable1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable1.setModel(modelTablePersona);
         jScrollPane1.setViewportView(jTable1);
 
-        jTextField1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtbuscarparametro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         bnbuscarpersona.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         bnbuscarpersona.setText("Buscar");
+        bnbuscarpersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bnbuscarpersonaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -294,9 +299,9 @@ public class GestionContable extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jlcorreo1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbbusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtbuscarparametro, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(42, 42, 42)
                                 .addComponent(bnbuscarpersona))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -346,8 +351,8 @@ public class GestionContable extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlcorreo1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbbusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtbuscarparametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bnbuscarpersona))
                         .addGap(33, 33, 33)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -590,8 +595,16 @@ public class GestionContable extends javax.swing.JFrame {
 
     private void bneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bneditarActionPerformed
         editar();
-    }//GEN-LAST:event_bneditarActionPerformed
+        tabla();
 
+
+    }//GEN-LAST:event_bneditarActionPerformed
+    void tabla() {
+        List<Persona> personasNombre = controladorPersona.buscarPersonasNombre(txtbuscarparametro.getText());
+        modelTablePersona.setPersonas(personasNombre);
+        modelTablePersona.fireTableDataChanged();
+
+    }
     private void bnregistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnregistroActionPerformed
         List<Persona> obtenerPersonas = controladorPersona.obtenerPersonas();
         personaEditar = obtenerPersonas.get(obtenerPersonas.size() - 1);
@@ -605,6 +618,7 @@ public class GestionContable extends javax.swing.JFrame {
 
     private void bneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bneliminarActionPerformed
         eliminar();
+        tabla();
     }//GEN-LAST:event_bneliminarActionPerformed
 
     private void bnbuscarnumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnbuscarnumeroActionPerformed
@@ -634,11 +648,24 @@ public class GestionContable extends javax.swing.JFrame {
     private void bnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnagregarActionPerformed
 
         guardar();
+        tabla();
     }//GEN-LAST:event_bnagregarActionPerformed
 
     private void bnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnlimpiarActionPerformed
         gestion.limpiar();
     }//GEN-LAST:event_bnlimpiarActionPerformed
+
+    private void bnbuscarpersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnbuscarpersonaActionPerformed
+        if (cmbbusqueda.getSelectedItem().equals("Nombres")) {
+            List<Persona> personasNombre = controladorPersona.buscarPersonasNombre(txtbuscarparametro.getText());
+            modelTablePersona.setPersonas(personasNombre);
+            modelTablePersona.fireTableDataChanged();
+
+        }
+
+
+
+    }//GEN-LAST:event_bnbuscarpersonaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -682,8 +709,8 @@ public class GestionContable extends javax.swing.JFrame {
     private javax.swing.JButton bneliminar;
     private javax.swing.JButton bnlimpiar;
     private javax.swing.JButton bnregistro;
+    private javax.swing.JComboBox<String> cmbbusqueda;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -701,7 +728,6 @@ public class GestionContable extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel jlapellido;
     private javax.swing.JLabel jlcedula;
     private javax.swing.JLabel jlcorreo;
@@ -716,10 +742,25 @@ public class GestionContable extends javax.swing.JFrame {
     private javax.swing.JMenu menuarchivo;
     private javax.swing.JMenu menueditar;
     private javax.swing.JTextField txtapellido;
+    private javax.swing.JTextField txtbuscarparametro;
     private javax.swing.JTextField txtcedula;
     private javax.swing.JTextField txtcorreo;
     private javax.swing.JTextField txtdireccion;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txttelefono;
     // End of variables declaration//GEN-END:variables
+
+    public void clickPersona(Persona p) {
+
+        System.out.println("Persona" + p.toString());
+
+        txtcedula.setText(p.getCedula());
+        txtnombre.setText(p.getNombre());
+        txtapellido.setText(p.getApellido());
+        txtdireccion.setText(p.getDireccion());
+        txttelefono.setText(p.getTelefono());
+        txtcorreo.setText(p.getCorreo());
+        personaEditar = p;
+
+    }
 }

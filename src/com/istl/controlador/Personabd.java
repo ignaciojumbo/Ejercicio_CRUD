@@ -137,9 +137,39 @@ public class Personabd {
         }
         return c;
     }
-//  
-//  
-//   
+    
+     public List<Persona> buscarPersonasNombre(String nombre) {
+        Connection co = null;
+        //Sentencia de JDBC para obtener valores de la base de datos.
+        ResultSetImpl rs;
+        List <Persona> personasEncontradas = new ArrayList<>();
+        String sql = "SELECT * FROM bdejercicio1.persona1 where Nombre like \"%"+nombre+"%\"";
+
+        try {
+            con = new Conexion().getConexion();
+            stm = (Statement) con.createStatement();
+
+            rs = (ResultSetImpl) stm.executeQuery(sql);
+            while (rs.next()) {
+               Persona c = new Persona();
+                c.setIdPersona(rs.getInt(1));
+                c.setCedula(rs.getString(2));
+                c.setNombre(rs.getString(3));
+                c.setApellido(rs.getString(4));
+                c.setDireccion(rs.getString(5));
+                c.setCorreo(rs.getString(6));
+                c.setTelefono(rs.getString(7));
+                personasEncontradas.add(c);
+            }
+            stm.close();
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("Error:" + e.getMessage());
+        }
+        return personasEncontradas;
+    }
+ 
 
     public List<Persona> obtenerPersonas() {
         Connection co = null;

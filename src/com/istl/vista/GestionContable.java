@@ -91,7 +91,12 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         jMenuBar2.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de ventas");
         setResizable(false);
+
+        jTabbedPane2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -113,6 +118,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         });
 
         bnagregar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bnagregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save-solid-24.png"))); // NOI18N
         bnagregar.setText("Agregar");
         bnagregar.setToolTipText("Guardar registro");
         bnagregar.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +164,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         txttelefono.setToolTipText("Ingrse un teléfono correcto");
 
         bnbuscar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search-alt-regular-24.png"))); // NOI18N
         bnbuscar.setText("Buscar");
         bnbuscar.setToolTipText("Buscar por cedula");
         bnbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -167,6 +174,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         });
 
         bnbuscarnumero.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bnbuscarnumero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search-alt-regular-24.png"))); // NOI18N
         bnbuscarnumero.setText("Buscar");
         bnbuscarnumero.setToolTipText("Buscar por numero");
         bnbuscarnumero.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +215,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
                                 .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                                 .addComponent(bnbuscar)))))
-                .addGap(147, 147, 147))
+                .addGap(135, 135, 135))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,6 +252,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         );
 
         bneliminar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/trash-alt-regular-24.png"))); // NOI18N
         bneliminar.setText("Eliminar");
         bneliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,6 +269,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         });
 
         bneditar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bneditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-alt-regular-24.png"))); // NOI18N
         bneditar.setText("Editar");
         bneditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,6 +290,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         txtbuscarparametro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         bnbuscarpersona.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bnbuscarpersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search-alt-regular-24.png"))); // NOI18N
         bnbuscarpersona.setText("Buscar");
         bnbuscarpersona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -322,17 +333,17 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(260, 260, 260)
+                        .addComponent(jLabel1)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,8 +366,8 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
                             .addComponent(txtbuscarparametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bnbuscarpersona))
                         .addGap(33, 33, 33)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(135, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Clientes", jPanel3);
@@ -402,9 +413,11 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
 
         jMenuBar1.setForeground(new java.awt.Color(102, 255, 102));
 
+        menuarchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/folder-regular-24.png"))); // NOI18N
         menuarchivo.setText("Archivo");
 
         jmenusalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmenusalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit-regular-24.png"))); // NOI18N
         jmenusalir.setText("Salir");
         jmenusalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -477,7 +490,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 11, Short.MAX_VALUE)
+                .addGap(0, 6, Short.MAX_VALUE)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -553,17 +566,29 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         Persona personaEditarLocal = gestion.guardarEditar();
         if (personaEditarLocal != null) {
             personaEditarLocal.setIdPersona(personaEditar.getIdPersona());
-            try {
-                if (controladorPersona.eliminar(personaEditarLocal)) {
-                    JOptionPane.showMessageDialog(rootPane, "Persona eliminadad con exito del sitema.");
-                    gestion.limpiar();
-                    personaEditar = null;
 
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "No se puede eliminar persona", "ERROR", JOptionPane.ERROR_MESSAGE);
+            try {
+                int confirmar = JOptionPane.showConfirmDialog(null, "¿ESTA SEGURO DE ELIMINAR A ESTE USUARIO?", "confirmar salida", 
+                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (confirmar == JOptionPane.YES_OPTION) {
+                    // CONFIRM DIALOG CON SI O NO:
+                    //EN CASO DE QUE LA OPCION SEA SI:
+                    if (confirmar == JOptionPane.YES_OPTION) {
+                        if (personaEditar != null) {
+                            if (controladorPersona.eliminar(personaEditarLocal)) {
+                                JOptionPane.showMessageDialog(rootPane, "Persona eliminada con éxito del sistema.");
+                                gestion.limpiar();
+                                personaEditar = null;
+
+                            }
+
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "No se puede eliminar persona", "ERROR", JOptionPane.ERROR_MESSAGE);
+
+                    }
 
                 }
-
             } catch (HeadlessException e) {
             }
 
@@ -664,7 +689,6 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         }
 
 
-
     }//GEN-LAST:event_bnbuscarpersonaActionPerformed
 
     public static void main(String args[]) {
@@ -752,8 +776,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
 
     public void clickPersona(Persona p) {
 
-        System.out.println("Persona" + p.toString());
-
+        // System.out.println("Persona" + p.toString());
         txtcedula.setText(p.getCedula());
         txtnombre.setText(p.getNombre());
         txtapellido.setText(p.getApellido());

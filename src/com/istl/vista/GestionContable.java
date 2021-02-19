@@ -94,7 +94,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         setTitle("Sistema de ventas");
         setResizable(false);
 
-        jTabbedPane2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jTabbedPane2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -560,40 +560,38 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
 
     public void eliminar() {
         if (personaEditar == null) {
-            JOptionPane.showMessageDialog(rootPane, "No hay una persona seleccionada para eliminar", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "No hay un registro seleccionada para eliminar", "ERROR", JOptionPane.ERROR_MESSAGE);
             return;
         }
         Persona personaEditarLocal = gestion.guardarEditar();
         if (personaEditarLocal != null) {
             personaEditarLocal.setIdPersona(personaEditar.getIdPersona());
-
             try {
-                int confirmar = JOptionPane.showConfirmDialog(null, "¿ESTA SEGURO DE ELIMINAR A ESTE USUARIO?", "confirmar salida", 
+                int confirmar = JOptionPane.showConfirmDialog(null, "¿ESTA SEGURO DE ELIMINAR A ESTE REGISTRO", "confirmar salida",
                         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                // CONFIRM DIALOG CON SI O NO:
+                //EN CASO DE QUE LA OPCION SEA SI:
                 if (confirmar == JOptionPane.YES_OPTION) {
-                    // CONFIRM DIALOG CON SI O NO:
-                    //EN CASO DE QUE LA OPCION SEA SI:
-                    if (confirmar == JOptionPane.YES_OPTION) {
-                        if (personaEditar != null) {
-                            if (controladorPersona.eliminar(personaEditarLocal)) {
-                                JOptionPane.showMessageDialog(rootPane, "Persona eliminada con éxito del sistema.");
-                                gestion.limpiar();
-                                personaEditar = null;
-
-                            }
+                    if (personaEditar != null) {
+                        if (controladorPersona.eliminar(personaEditarLocal)) {
+                            JOptionPane.showMessageDialog(rootPane, "Persona eliminada con éxito del sistema.");
+                            gestion.limpiar();
+                            personaEditar = null;
 
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(rootPane, "No se puede eliminar persona", "ERROR", JOptionPane.ERROR_MESSAGE);
 
                     }
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "No se puede eliminar persona", "ERROR", JOptionPane.ERROR_MESSAGE);
 
                 }
+
             } catch (HeadlessException e) {
             }
 
         }
     }
+
     private void jmenusalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenusalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jmenusalirActionPerformed

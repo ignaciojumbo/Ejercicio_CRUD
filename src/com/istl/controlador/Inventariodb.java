@@ -19,7 +19,8 @@ public class Inventariodb {
     public boolean RegistrarInventario(Inventario inventario) {
         boolean registrar = false;
 
-        String sql = "INSERT INTO inventario (`codigo_pro`, `descripcion`, `precios_compra`, `precio_venta`, `can_productos`) VALUES ('"
+        String sql = "INSERT INTO inventario (`codigo_pro`, `descripcion`, `precios_compra`, "
+                + "`precio_venta`, `can_productos`) VALUES ('"
                 + inventario.getCodigo_pro() + "', '"
                 + inventario.getDescripción() + "', '"
                 + inventario.getPrecios_compra() + "', '"
@@ -61,7 +62,8 @@ public class Inventariodb {
 
     public boolean editar(Inventario inventario) throws SQLException {
         boolean actualiar = false;
-        String sql = "UPDATE `bdejercicio1`.`inventario` SET `codigo_pro` = '" + inventario.getCodigo_pro() + "', `descripcion` = '" + inventario.getDescripción()
+        String sql = "UPDATE `bdejercicio1`.`inventario` SET `codigo_pro` = '" + inventario.getCodigo_pro() 
+                + "', `descripcion` = '" + inventario.getDescripción()
                 + "', `precios_compra` = '" + inventario.getPrecios_compra() + "', `precio_venta` = '"
                 + inventario.getPrecios_compra() + "', `can_productos` = '" + inventario.getCan_productos()
                 + "' WHERE (`id_inventario` = '" + inventario.getId_inventario() + "');";

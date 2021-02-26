@@ -67,7 +67,9 @@ public class Inventario {
 
     @Override
     public String toString() {
-        return "Inventario{" + "id_inventario=" + id_inventario + ", codigo_pro=" + codigo_pro + ", descripci\u00f3n=" + descripción + ", precios_compra=" + precios_compra + ", precio_venta=" + precio_venta + ", can_productos=" + can_productos + '}';
+        return "Inventario{" + "id_inventario=" + id_inventario + ", codigo_pro=" + codigo_pro +
+                ", descripci\u00f3n=" + descripción + ", precios_compra=" + precios_compra + ", precio_venta="
+                + precio_venta + ", can_productos=" + can_productos + '}';
     }
 
     

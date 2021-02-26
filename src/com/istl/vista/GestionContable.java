@@ -127,7 +127,6 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionV
         txtcantidadin = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         bnlimpiarpro1 = new javax.swing.JButton();
-        bnregistropro1 = new javax.swing.JButton();
         bneliminarpro1 = new javax.swing.JButton();
         bneditarpro1 = new javax.swing.JButton();
         bnguardarinve = new javax.swing.JButton();
@@ -778,15 +777,6 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionV
             }
         });
 
-        bnregistropro1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        bnregistropro1.setText("Ver registro");
-        bnregistropro1.setToolTipText("Ver registros");
-        bnregistropro1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bnregistropro1ActionPerformed(evt);
-            }
-        });
-
         bneliminarpro1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         bneliminarpro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/trash-alt-regular-24.png"))); // NOI18N
         bneliminarpro1.setText("Eliminar");
@@ -840,32 +830,37 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionV
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jlcorreo8)
-                .addGap(18, 18, 18)
-                .addComponent(cmbbusquedainven, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtbuscarparametroinventario, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(bnbuscarinventario)
-                .addGap(30, 30, 30))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(jlcorreo8)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbbusquedainven, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtbuscarparametroinventario, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bnbuscarinventario)
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(bneditarpro1)
+                        .addGap(75, 75, 75)
+                        .addComponent(bneliminarpro1)
+                        .addGap(233, 233, 233))))
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addGap(29, 29, 29)
                     .addComponent(bnguardarinve)
-                    .addGap(31, 31, 31)
-                    .addComponent(bneditarpro1)
-                    .addGap(29, 29, 29)
-                    .addComponent(bneliminarpro1)
-                    .addGap(18, 18, 18)
-                    .addComponent(bnregistropro1)
-                    .addGap(18, 18, 18)
+                    .addGap(431, 431, 431)
                     .addComponent(bnlimpiarpro1)
                     .addContainerGap(29, Short.MAX_VALUE)))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bneliminarpro1)
+                    .addComponent(bneditarpro1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlcorreo8)
                     .addComponent(cmbbusquedainven, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -876,10 +871,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionV
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addGap(18, 18, 18)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(bneliminarpro1)
-                        .addComponent(bneditarpro1)
                         .addComponent(bnguardarinve)
-                        .addComponent(bnregistropro1)
                         .addComponent(bnlimpiarpro1))
                     .addContainerGap(57, Short.MAX_VALUE)))
         );
@@ -1409,10 +1401,6 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionV
         gestioninven.limpiar();
     }//GEN-LAST:event_bnlimpiarpro1ActionPerformed
 
-    private void bnregistropro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnregistropro1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bnregistropro1ActionPerformed
-
     private void bneliminarpro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bneliminarpro1ActionPerformed
         eliminarInventario();
     }//GEN-LAST:event_bneliminarpro1ActionPerformed
@@ -1498,7 +1486,6 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionV
     private javax.swing.JButton bnlimpiarpro1;
     private javax.swing.JButton bnregistro;
     private javax.swing.JButton bnregistropro;
-    private javax.swing.JButton bnregistropro1;
     private javax.swing.JComboBox<String> cmbbusqueda;
     private javax.swing.JComboBox<String> cmbbusquedainven;
     private javax.swing.JComboBox<String> cmbbusquedapro;

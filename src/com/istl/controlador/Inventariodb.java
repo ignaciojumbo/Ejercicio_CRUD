@@ -2,6 +2,7 @@ package com.istl.controlador;
 
 import com.istl.conexionbd.Conexion;
 import com.istl.modelo.Persona;
+import com.istl.modelo.Inventario;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.ResultSetImpl;
 import com.mysql.jdbc.Statement;
@@ -9,17 +10,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Personabd {
+public class Inventariodb {
 
     Statement stm = null;
     Connection con = null;
     Conexion conexion = new Conexion();
 
-    public boolean RegistrarPersona(Persona persona) {
+    public boolean RegistrarInventario(Inventario inventario) {
         boolean registrar = false;
 
-        String sql = "INSERT INTO `bdejercicio1`.`persona1` (`Cedula`, `Nombre`, `Apellido`, `Direccion`, `Correo`, `Telefono`) "
-                + "VALUES ('" + persona.getCedula() + "', '" + persona.getNombre() + "', '" + persona.getApellido() + "', '" + persona.getDireccion() + "', '" + persona.getCorreo() + "', '" + persona.getTelefono() + "')";
+        String sql = "INSERT INTO inventario (`codigo_pro`, `descripcion`, `precios_compra`, `precio_venta`, `can_productos`) VALUES ('"
+                + inventario.getCodigo_pro() + "', '"
+                + inventario.getDescripción() + "', '"
+                + inventario.getPrecios_compra() + "', '"
+                + inventario.getPrecio_venta() + "', '"
+                + inventario.getCan_productos() + "');";
 
         try {
 
@@ -38,11 +43,11 @@ public class Personabd {
 
     }
 
-    public boolean eliminar(Persona persona) {
+    public boolean eliminarInvetario(Inventario inventario) {
 
         boolean eliminar = false;
-        String sql = "DELETE FROM `bdejercicio1`.`persona1` WHERE (`idpersona1` = '"
-                + String.valueOf(persona.getIdPersona()) + "');";
+        String sql = "DELETE FROM `bdejercicio1`.`inventario` WHERE (`id_inventario` = '"
+                + String.valueOf(inventario.getId_inventario()) + "');";
         try {
             con = new Conexion().getConexion();
             stm = (Statement) con.createStatement();
@@ -54,12 +59,12 @@ public class Personabd {
         return eliminar;
     }
 
-    public boolean editar(Persona persona) throws SQLException {
+    public boolean editar(Inventario inventario) throws SQLException {
         boolean actualiar = false;
-        String sql = "UPDATE `bdejercicio1`.`persona1` SET `Cedula` = '" + persona.getCedula() + "', `Nombre` = '" + persona.getNombre()
-                + "', `Apellido` = '" + persona.getApellido() + "', `Direccion` = '"
-                + persona.getDireccion() + "', `Correo` = '" + persona.getCorreo()
-                + "', `Telefono` = '" + persona.getTelefono() + "' WHERE (`idpersona1` = '" + persona.getIdPersona() + "');";
+        String sql = "UPDATE `bdejercicio1`.`inventario` SET `codigo_pro` = '" + inventario.getCodigo_pro() + "', `descripcion` = '" + inventario.getDescripción()
+                + "', `precios_compra` = '" + inventario.getPrecios_compra() + "', `precio_venta` = '"
+                + inventario.getPrecios_compra() + "', `can_productos` = '" + inventario.getCan_productos()
+                + "' WHERE (`id_inventario` = '" + inventario.getId_inventario() + "');";
         try {
             con = conexion.getConexion();
             stm = (Statement) con.createStatement();
@@ -73,13 +78,13 @@ public class Personabd {
 
     }
 
-    public Persona buscarPersonas(String cedula) {
+    public Inventario buscarInventarioCodigo(String codigo) {
         Connection co = null;
 
         //Sentencia de JDBC para obtener valores de la base de datos.
         ResultSetImpl rs;
-        Persona c = null;
-        String sql = "SELECT * FROM bdejercicio1.persona1 where Cedula like " + cedula + ";";
+        Inventario in = null;
+        String sql = "SELECT * FROM bdejercicio1.inventario where codigo_pro like " + codigo + ";";
 
         try {
             con = new Conexion().getConexion();
@@ -87,14 +92,14 @@ public class Personabd {
 
             rs = (ResultSetImpl) stm.executeQuery(sql);
             while (rs.next()) {
-                c = new Persona();
-                c.setIdPersona(rs.getInt(1));
-                c.setCedula(rs.getString(2));
-                c.setNombre(rs.getString(3));
-                c.setApellido(rs.getString(4));
-                c.setDireccion(rs.getString(5));
-                c.setCorreo(rs.getString(6));
-                c.setTelefono(rs.getString(7));
+                in = new Inventario();
+
+                in.setId_inventario(rs.getInt(1));
+                in.setCodigo_pro(rs.getString(2));
+                in.setDescripción(rs.getString(3));
+                in.setPrecio_venta(rs.getString(4));
+                in.setPrecios_compra(rs.getString(5));
+                in.setCan_productos(rs.getInt(6));
 
             }
             stm.close();
@@ -104,7 +109,7 @@ public class Personabd {
             System.out.println("Error:" + e.getMessage());
         }
 
-        return c;
+        return in;
     }
 
     public Persona buscarPersonasNumero(String numero) {
@@ -137,13 +142,13 @@ public class Personabd {
         }
         return c;
     }
-    
-     public List<Persona> buscarPersonasNombre(String nombre) {
+
+    public List<Inventario> buscarInventarioDescripcion(String descripcion) {
         Connection co = null;
         //Sentencia de JDBC para obtener valores de la base de datos.
         ResultSetImpl rs;
-        List <Persona> personasEncontradas = new ArrayList<>();
-        String sql = "SELECT * FROM bdejercicio1.persona1 where Nombre like \"%"+nombre+"%\"";
+        List<Inventario> descripcionEncontrado = new ArrayList<>();
+        String sql = "SELECT * FROM bdejercicio1.inventario where descripcion like \"%" + descripcion + "%\"";
 
         try {
             con = new Conexion().getConexion();
@@ -151,15 +156,14 @@ public class Personabd {
 
             rs = (ResultSetImpl) stm.executeQuery(sql);
             while (rs.next()) {
-               Persona c = new Persona();
-                c.setIdPersona(rs.getInt(1));
-                c.setCedula(rs.getString(2));
-                c.setNombre(rs.getString(3));
-                c.setApellido(rs.getString(4));
-                c.setDireccion(rs.getString(5));
-                c.setCorreo(rs.getString(6));
-                c.setTelefono(rs.getString(7));
-                personasEncontradas.add(c);
+                Inventario in = new Inventario();
+                in.setId_inventario(rs.getInt(1));
+                in.setCodigo_pro(rs.getString(2));
+                in.setDescripción(rs.getString(3));
+                in.setPrecio_venta(rs.getString(4));
+                in.setPrecios_compra(rs.getString(5));
+                in.setCan_productos(rs.getInt(6));
+                descripcionEncontrado.add(in);
             }
             stm.close();
             rs.close();
@@ -167,33 +171,31 @@ public class Personabd {
         } catch (SQLException e) {
             System.out.println("Error:" + e.getMessage());
         }
-        return personasEncontradas;
+        return descripcionEncontrado;
     }
- 
 
-    public List<Persona> obtenerPersonas() {
+    public List<Inventario> obtenerInventario() {
         Connection co = null;
 
         //Sentencia de JDBC para obtener valores de la base de datos.
         ResultSetImpl rs;
-        String sql = "SELECT * FROM persona1;";
+        String sql = "SELECT * FROM inventario;";
 
-        List<Persona> listaPersonas = new ArrayList<>();
+        List<Inventario> listaInventario = new ArrayList<>();
         try {
             con = new Conexion().getConexion();
             stm = (Statement) con.createStatement();
 
             rs = (ResultSetImpl) stm.executeQuery(sql);
             while (rs.next()) {
-                Persona c = new Persona();
-                c.setIdPersona(rs.getInt(1));
-                c.setCedula(rs.getString(2));
-                c.setNombre(rs.getString(3));
-                c.setApellido(rs.getString(4));
-                c.setDireccion(rs.getString(5));
-                c.setCorreo(rs.getString(6));
-                c.setTelefono(rs.getString(7));
-                listaPersonas.add(c);
+                Inventario in = new Inventario();
+                in.setId_inventario(rs.getInt(1));
+                in.setCodigo_pro(rs.getString(2));
+                in.setDescripción(rs.getString(3));
+                in.setPrecio_venta(rs.getString(4));
+                in.setPrecios_compra(rs.getString(5));
+                in.setCan_productos(rs.getInt(6));
+                listaInventario.add(in);
             }
             stm.close();
             rs.close();
@@ -202,6 +204,6 @@ public class Personabd {
             System.out.println("Error:" + e.getMessage());
         }
 
-        return listaPersonas;
+        return listaInventario;
     }
 }

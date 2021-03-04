@@ -15,6 +15,7 @@ import com.istl.modelJTable.ComunicacionVistadeTablas;
 import com.istl.modelJTable.ModelTableInventario;
 import com.istl.modelJTable.ModelTableProveedor;
 import com.istl.modelo.Inventario;
+import com.istl.utilidad.UtilidadInventario;
 
 public class GestionContable extends javax.swing.JFrame implements ComunicacionVistadeTablas {
 
@@ -31,6 +32,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionV
     private ModelTableProveedor modelTableProveedor;
     private Proveedor proveedoreditar;
     private Inventario inventarioeditar;
+    private UtilidadInventario util;
 
     public GestionContable() {
         controladorPersona = new Personabd();
@@ -42,9 +44,10 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionV
         initComponents();
         this.setLocationRelativeTo(null);
         utilidad = new Utilidad();
+        util = new UtilidadInventario();
         gestion = new GestionPersona(txtcedula, txtnombre, txtapellido, txtdireccion, txttelefono, txtcorreo, utilidad, this);
         gestionpro = new GestionProveedor(txtrucpro, txtrazonpro, txtactividadpro, txtnombrepro, txtapellidopro, txttelefonopro, txtcorreopro, this);
-        gestioninven = new GestionInventario(txtcodigoin, txtdescripcionin, txtprecioin, txtprecioin, txtcantidadin, this);
+        gestioninven = new GestionInventario(txtcodigoin, txtdescripcionin, txtprecioin, txtventain, txtcantidadin, util, this);
     }
 
     @SuppressWarnings("unchecked")
@@ -812,6 +815,11 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionV
 
         cmbbusquedainven.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cmbbusquedainven.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CÓDIGO", "DESCRIPCIÓN" }));
+        cmbbusquedainven.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbbusquedainvenActionPerformed(evt);
+            }
+        });
 
         txtbuscarparametroinventario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
@@ -1414,19 +1422,23 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionV
     }//GEN-LAST:event_bnguardarinveActionPerformed
 
     private void bnbuscarinventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnbuscarinventarioActionPerformed
-        if (cmbbusquedainven.getSelectedItem().equals("DESCRIPCIÓN")) {
-            List<Inventario> inventarioDescripcion = controladorInvenario.buscarInventarioDescripcion(txtbuscarparametroinventario.getText());
-            modelTableInventario.setInventario(inventarioDescripcion);
-            modelTableInventario.fireTableDataChanged();
-
+        System.out.println("Combo" + cmbbusquedainven.getSelectedIndex());
+        switch (cmbbusquedainven.getSelectedIndex()) {
+            case 0://Codigo
+                modelTableInventario.setInventario(controladorInvenario.busquedadInventarioCodigo(txtbuscarparametroinventario.getText()));
+                modelTableInventario.fireTableDataChanged();
+                break;
+            case 1://7Descripcion
+                modelTableInventario.setInventario(controladorInvenario.buscarInventarioDescripcion(txtbuscarparametroinventario.getText()));
+                modelTableInventario.fireTableDataChanged();
+                break;
         }
-//        if (cmbbusquedainven.getSelectedItem().equals("CÓDIGO")) {
-//            List<Inventario> inventarioDescripcion = controladorInvenario.buscarInventarioCodigo(String.valueOf(txtbuscarparametroinventario.getText()));
-//            modelTableInventario.setInventario(inventarioDescripcion);
-//            modelTableInventario.fireTableDataChanged();
-//
-//        }
+
     }//GEN-LAST:event_bnbuscarinventarioActionPerformed
+
+    private void cmbbusquedainvenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbusquedainvenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbbusquedainvenActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

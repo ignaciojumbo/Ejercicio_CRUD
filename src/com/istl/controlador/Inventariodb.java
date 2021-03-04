@@ -6,6 +6,7 @@ import com.istl.modelo.Inventario;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.ResultSetImpl;
 import com.mysql.jdbc.Statement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -80,38 +81,34 @@ public class Inventariodb {
 
     }
 
-    public Inventario buscarInventarioCodigo(String codigo) {
-        Connection co = null;
-
+    public List<Inventario> busquedadInventarioCodigo(String codigo) {
+        System.out.println("BusquedaCodigo"+ codigo);
         //Sentencia de JDBC para obtener valores de la base de datos.
-        ResultSetImpl rs;
-        Inventario in = null;
-        String sql = "SELECT * FROM bdejercicio1.inventario where codigo_pro like " + codigo + ";";
-
+        ResultSet rs = null;
+        String sql = "SELECT * FROM bdejercicio1.inventario where codigo_pro = '"+codigo+"';";
+        List<Inventario> listaInventario = new ArrayList<Inventario>();
         try {
             con = new Conexion().getConexion();
             stm = (Statement) con.createStatement();
-
-            rs = (ResultSetImpl) stm.executeQuery(sql);
+            rs = stm.executeQuery(sql);
             while (rs.next()) {
-                in = new Inventario();
-
+                 Inventario in = new Inventario();
                 in.setId_inventario(rs.getInt(1));
                 in.setCodigo_pro(rs.getString(2));
                 in.setDescripción(rs.getString(3));
                 in.setPrecio_venta(rs.getString(4));
                 in.setPrecios_compra(rs.getString(5));
                 in.setCan_productos(rs.getInt(6));
-
+                listaInventario.add(in);
             }
             stm.close();
             rs.close();
             con.close();
         } catch (SQLException e) {
-            System.out.println("Error:" + e.getMessage());
+            System.out.println("Error:"+ e.getMessage());
         }
 
-        return in;
+        return listaInventario;
     }
 
     public Persona buscarPersonasNumero(String numero) {

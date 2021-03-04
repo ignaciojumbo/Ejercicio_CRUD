@@ -10,12 +10,8 @@ package com.istl.utilidad;
  * @author IDEAPAD 330
  */
 public class UtilidadInventario {
-      public boolean validarCodigo(String numero){
-        
-        if(numero.isEmpty() ){
-            return false;
-        }
-      
+
+    public boolean validarCodigo(String numero){ 
         try {
             int validarNumero = Integer.parseInt(numero);
             return true;
@@ -24,5 +20,5 @@ public class UtilidadInventario {
         }
         
     }
-    
+
 }
